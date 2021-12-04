@@ -9,6 +9,12 @@ fn main() {
     shifted.remove(0);
     let count = lines.iter().zip(shifted.iter()).map(|(a, b)| a - b).filter(|x| x.is_positive()).collect::<Vec<i32>>().len();
     println!("{}", count);
+
+    let lines = read_input();
+    let mut shifted = lines.clone();
+    shifted.rotate_left(3);
+    let count = lines.iter().zip(shifted.iter()).map(|(a, b)| b - a).filter(|x| x.is_positive()).collect::<Vec<i32>>().len();
+    println!("{}", count);
 }
 
 fn read_input() -> Vec<i32> {
