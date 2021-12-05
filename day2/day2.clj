@@ -1,8 +1,7 @@
-(def in (slurp "input.txt"))
-(def splitted (clojure.string/split-lines in))
-
-(defn format_commands [line]
-  (clojure.string/split line #" ")
+(defn read_input [file] 
+  (def in (slurp file))
+  (def splitted (clojure.string/split-lines in))
+  (map (fn [line] (clojure.string/split line #" ")) splitted)
 )
 
 (defn xy_command [command]
@@ -21,8 +20,22 @@
   )
 )
 
-(def commands (map format_commands splitted))
+(def commands (read_input "input.txt"))
 (def xy (reduce + (map xy_command commands)))
 (def z (reduce  + (map z_command commands)))
 (println (* xy z))
 
+(def commands (read_input "input.txt"))
+
+(def aim 
+  (reductions + (map z_command commands))
+)
+
+(def xy
+  (reduce + (map xy_command commands))
+)
+
+(def z
+  (reduce + (map * aim (map xy_command commands)))
+)
+(println (* xy z))
