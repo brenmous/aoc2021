@@ -54,4 +54,28 @@ import statistics
 def fuel_for_pos(crabs, pos):
     return sum([abs(crab - pos) for crab in crabs])
 
-print(fuel_for_pos(crabs, int(statistics.median(crabs))))
+med = int(statistics.median(crabs))
+print((med, fuel_for_pos(crabs, med)))
+
+def part2(crabs):
+    num_crabs = defaultdict(int)
+    for crab in crabs:
+        num_crabs[crab] += 1
+    possible_positions = range(1, max(crabs) + 1)
+    unique_crabs = sorted(list(set(crabs)))
+    best_cost = sys.maxsize
+    best_pos = 0
+    for pos in possible_positions:
+        fuel = 0
+        for crab in unique_crabs:
+            moves = abs(crab - pos) * (abs(crab - pos) + 1) // 2
+            fuel += moves * num_crabs[crab]
+            if fuel >= best_cost:
+                break
+        if fuel < best_cost:
+            best_cost = fuel
+            best_pos = pos
+
+    return best_pos, best_cost
+
+print(part2(crabs))
