@@ -12,13 +12,18 @@
   (reduce + (range 1 (+ 1 end)))
 )
 
+(defn moves3 [end]
+  (/ (* end (+ end 1)) 2)
+)
+
 (defn fuel_costing1 [crab pos]
   (abs (- crab pos))
 )
 
 (defn fuel_costing2 [crab pos]
-  (moves2 (abs(- crab pos)))
+  (moves3 (abs(- crab pos)))
 )
+
   
 (defn part1 [crabs]
   (for [pos (range 1 (+ (apply max crabs) 1))]
