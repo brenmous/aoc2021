@@ -24,7 +24,7 @@ def brute(crabs):
 
     return best_pos, best_cost
 
-print(brute(crabs))
+#print(brute(crabs))
 
 def brute_2(crabs):
     num_crabs = defaultdict(int)
@@ -47,4 +47,11 @@ def brute_2(crabs):
 
     return best_pos, best_cost
 
-print(brute_2(crabs))
+#print(brute_2(crabs))
+
+import statistics
+
+def fuel_for_pos(crabs, pos):
+    return sum([abs(crab - pos) for crab in crabs])
+
+print(fuel_for_pos(crabs, int(statistics.median(crabs))))
