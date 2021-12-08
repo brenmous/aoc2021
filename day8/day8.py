@@ -19,22 +19,23 @@ def to_bin(s):
     binary = ''.join(['1' if x in s else '0' for x in mask])
     return int(binary, 2)
 
-example_signal_nums = [8, 5, 2, 3, 7, 9, 6, 4, 0, 1]
-decoded = {}
-for num, signal in zip(example_signal_nums, signals[0]):
-    decoded[num] = to_bin(signal)
-
-for i in [1, 4, 7]:
-    print("five segment")
-    for j in [2, 3, 5]:
-        print(f"{i} & {j} = {bin(decoded[i] & decoded[j]).count('1')}")
-    print("six segment")
-    for j in [0, 6, 9]:
-        print(f"{i} & {j} = {bin(decoded[i] & decoded[j]).count('1')}")
+# Uses the provided solved input
+# example_signal_nums = [8, 5, 2, 3, 7, 9, 6, 4, 0, 1]
+# decoded = {}
+# for num, signal in zip(example_signal_nums, signals[0]):
+#     decoded[num] = to_bin(signal)
+#
+# for i in [1, 4, 7]:
+#     print("five segment")
+#     for j in [2, 3, 5]:
+#         print(f"{i} & {j} = {bin(decoded[i] & decoded[j]).count('1')}")
+#     print("six segment")
+#     for j in [0, 6, 9]:
+#         print(f"{i} & {j} = {bin(decoded[i] & decoded[j]).count('1')}")
 
 # 5 segments
 # 1 & x == 2 set, x = 3
-# 4 & 2 == 2 set, y = 2
+# 4 & y == 2 set, y = 2
 # z = 5
 
 # 6 segments
